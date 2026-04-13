@@ -1,0 +1,29 @@
+{
+  "date": "2026-04-13",
+  "category": "korean_nlp_mcp",
+  "article_count": 3,
+  "source_count": 1,
+  "matched_count": 3,
+  "top_entities": [
+    {
+      "name": "MCPDomain",
+      "count": 12
+    },
+    {
+      "name": "ProjectHealth",
+      "count": 8
+    },
+    {
+      "name": "Capability",
+      "count": 3
+    },
+    {
+      "name": "RiskScope",
+      "count": 1
+    }
+  ],
+  "sources": {
+    "awesome-mcp-korea Korean NLP & Language": 3
+  },
+  "generated_at": "2026-04-13T11:10:35.928068+09:00"
+}
