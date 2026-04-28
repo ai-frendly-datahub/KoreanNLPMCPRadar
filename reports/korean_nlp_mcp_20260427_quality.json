@@ -1,6 +1,6 @@
 {
   "category": "korean_nlp_mcp",
-  "generated_at": "2026-04-28T00:40:53.708606+00:00",
+  "generated_at": "2026-04-27T23:44:45.311067+00:00",
   "scope_note": "korean_nlp_mcp treats the awesome-mcp-korea section as a T4 community directory seed. Repository metadata, API credential scope, and security context remain separate enrichment layers until archived, license, and advisory fields are collected.",
   "summary": {
     "total_sources": 3,
@@ -59,7 +59,7 @@
       "article_count": 2,
       "event_count": 2,
       "latest_event_at": "2026-04-24T12:44:35.671953+00:00",
-      "age_days": 3.5,
+      "age_days": 3.46,
       "latest_title": "mcp-korean-spell",
       "latest_url": "https://github.com/winterjung/mcp-korean-spell",
       "latest_mcp_domain": [
@@ -141,7 +141,7 @@
       "article_count": 1,
       "event_count": 1,
       "latest_event_at": "2026-04-24T12:44:39.187347+00:00",
-      "age_days": 3.5,
+      "age_days": 3.46,
       "latest_title": "fixtures/mcp/kordoc_smoke_sample.pdf: pdf",
       "latest_url": "https://github.com/chrisryugj/kordoc",
       "latest_mcp_domain": [],
