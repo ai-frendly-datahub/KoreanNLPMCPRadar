@@ -120,3 +120,5 @@ def test_generate_quality_artifacts_uses_latest_stored_checkpoint(
     assert "quality_report=" in captured.out
     assert "tracked_sources=1" in captured.out
     assert "mcp_signal_event_count=2" in captured.out
+    assert "repository_metadata_stale_sources=0" in captured.out
+    assert "repository_metadata_review_required=0" in captured.out

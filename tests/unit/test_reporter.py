@@ -36,6 +36,7 @@ def test_generate_report_includes_mcp_quality_panel(tmp_path: Path) -> None:
             "enabled_mcp_server_source_count": 1,
             "mcp_tool_result_events": 1,
             "repository_metadata_gap_count": 3,
+            "repository_metadata_stale_source_count": 2,
             "daily_review_item_count": 1,
         },
         "daily_review_items": [
@@ -61,6 +62,7 @@ def test_generate_report_includes_mcp_quality_panel(tmp_path: Path) -> None:
     assert 'data-visual-page="daily-report"' in html
     assert 'id="mcp-quality"' in html
     assert "MCP Source Quality" in html
+    assert "Metadata stale" in html
     assert "mcp_candidate_disabled" in html
 
     summaries = sorted(tmp_path.glob(f"{category.category_name}_*_summary.json"))

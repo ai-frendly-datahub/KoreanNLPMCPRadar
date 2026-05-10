@@ -83,44 +83,311 @@ sources:
 - id: mcp_candidate_dahlia_ko_stdict_mcp
   name: dahlia/ko-stdict-mcp
   type: mcp_server
-  enabled: false
+  enabled: true
   url: https://github.com/dahlia/ko-stdict-mcp
   transport: stdio
   trust_tier: T4_community
   collection_tier: C4_mcp_tool
   content_type: mcp_tool_result
   risk_scope:
+  - bulk_data_download
+  - local_file_write
   - network_read
-  - tool_allowlist_unresolved
-  notes: Activation audit applied; source remains disabled until transport smoke tests
-    and required secrets are validated.
+  notes: Deno/JSR package and read-only tool allowlist resolved from upstream README,
+    deno.json, and src/mcp/server.ts on 2026-04-29. Repo-local fake stdio transport
+    passed for dictionary_status. A first real probe showed the package root import
+    exits without starting stdio, so the launch now calls the exported runStdioServer()
+    through deno eval with KO_STDICT_DATA_DIR pinned under the bounded cache root.
+    On 2026-05-08 the retained staging SQLite cache was promoted offline into
+    a ready prebuilt cache with schema/provenance metadata, then a bounded real
+    transport preflight passed by calling dictionary_status against the ready
+    cache only. On 2026-05-08 the same controlled dictionary_status-only path
+    passed the real transport enablement smoke, so the source is enabled under
+    controlled rollout with the ready cache retained and refresh/search/get tools
+    still disallowed.
   config:
     repository: dahlia/ko-stdict-mcp
     source_seed: awesome-mcp-korea
     source_section: Korean NLP & Language
-    activation_status: blocked_command_unresolved
-    activation_audited_at: '2026-04-14T01:55:57.420863+00:00'
-    metadata_checked_at: '2026-04-14T01:30:44.113793+00:00'
+    activation_status: real_transport_smoke_test_passed
+    activation_audited_at: '2026-04-29T12:04:12+00:00'
+    real_transport_smoke_tested_at: '2026-05-08T05:05:11+00:00'
+    real_transport_smoke_test_status: passed
+    real_transport_smoke_test_artifact: _workspace/2026-05-08_kostdict_bounded_real_preflight_probe.json
+    real_transport_smoke_test_source: bounded_real_transport_probe_dictionary_status
+    risk_scope_reviewed_at: '2026-05-07T07:23:36+00:00'
+    risk_scope_review_status: reviewed_static_allowlist
+    risk_scope_review_artifact: _workspace/2026-05-07_mcp_risk_scope_gate_closure.json
+    risk_scope_review_source: category_risk_scope_and_tool_allowlist
+    production_monitoring_reviewed_at: "2026-05-08T06:52:24+00:00"
+    production_monitoring_status: "controlled_monitoring_active"
+    production_monitoring_artifact: "_workspace/2026-05-08_kostdict_real_transport_enablement_smoke.json"
+    production_monitoring_source: "controlled_real_transport_enablement_smoke"
+    production_monitoring_activation_condition: "source_enabled_after_ready_cache_and_bounded_dictionary_status_real_probe"
+    production_monitoring_rollout_scope: "dictionary_status_only_ready_cache"
+    metadata_checked_at: '2026-05-07T05:20:56+00:00'
+    metadata_refresh_status: passed
+    metadata_refresh_artifact: _workspace/2026-05-07_mcp_github_repository_metadata_refresh.json
+    metadata_refresh_source: github_rest_api
     github_archived: false
     github_disabled: false
     github_license: AGPL-3.0
     github_pushed_at: '2026-03-29T08:16:57Z'
     github_default_branch: main
-    github_stars: 22
-    command: ''
-    args: []
-    env: []
-    tools: []
+    github_stars: 23
+    github_head_sha: 168f902bc8b820f4242812ed0af411a5e8918893
+    docs_advisory_checked_at: '2026-04-30T05:06:52+00:00'
+    docs_advisory_audit_status: passed
+    docs_advisory_audit_artifact: _workspace/2026-04-30_cycle69_mcp_docs_advisory_audit.json
+    docs_advisory_audit_source: github_rest_api_contents_and_security_advisories_with_raw_html_fallback
+    github_readme_present: true
+    github_readme_path: README.md
+    github_readme_size: 2861
+    github_docs_present: true
+    github_docs_paths:
+      - README.md
+    github_docs_path_count: 1
+    github_security_policy_present: false
+    github_security_policy_paths: []
+    github_security_advisory_access_status: checked
+    github_security_advisory_count: 0
+    github_security_advisory_open_count: 0
+    github_security_advisory_published_count: 0
+    github_security_advisory_state_counts: {}
+    github_security_advisory_ids: []
+    package_registry: jsr
+    package_registry_crosscheck_status: passed
+    package_registry_crosschecked_at: '2026-04-29T12:01:44+00:00'
+    package_name: '@hongminhee/ko-stdict-mcp'
+    package_version: 0.2.0
+    package_license: AGPL-3.0-or-later
+    package_registry_url: https://jsr.io/@hongminhee/ko-stdict-mcp
+    command_semantics: npx_deno_eval_jsr_run_stdio_server
+    command_resolution_status: resolved_via_npx_deno_eval
+    real_transport_entrypoint_review_status: package_root_import_exits_without_stdio
+    real_transport_entrypoint_reviewed_at: '2026-04-29T13:15:21+00:00'
+    real_transport_entrypoint_review_artifact: _workspace/2026-04-29_cycle52_kostdict_bounded_real_bootstrap_probe_rerun.json
+    real_transport_entrypoint_corrective_action: call_exported_runStdioServer_via_deno_eval
+    runtime_bootstrap_issue: startup_downloads_official_dictionary_dump_and_rebuilds_sqlite
+    runtime_bootstrap_review_status: bounded_preflight_policy_documented
+    runtime_bootstrap_reviewed_at: '2026-04-29T12:32:59+00:00'
+    runtime_bootstrap_review_artifact: _workspace/2026-04-29_cycle50_kostdict_bootstrap_review.json
+    runtime_bootstrap_preflight_guard_status: static_guard_enforced_in_probe
+    runtime_bootstrap_preflight_guarded_at: '2026-04-29T12:52:23+00:00'
+    runtime_bootstrap_preflight_guard_artifact: _workspace/2026-04-29_cycle51_kostdict_bounded_preflight_dry_run.json
+    bounded_real_bootstrap_previous_failure_status: failed_bootstrap_timeout
+    bounded_real_bootstrap_previous_failure_tested_at: '2026-04-29T13:23:10.261813+00:00'
+    bounded_real_bootstrap_previous_failure_artifact: _workspace/2026-04-29_cycle52_kostdict_eval_entrypoint_bounded_real_probe.json
+    bounded_real_bootstrap_previous_timeout_seconds: 300
+    bounded_real_bootstrap_previous_cache_status: passed_within_limit
+    bounded_real_bootstrap_previous_cache_bytes: 677139214
+    bounded_real_bootstrap_preflight_status: passed_ready_cache_dictionary_status
+    bounded_real_bootstrap_preflight_tested_at: '2026-05-08T05:05:11+00:00'
+    bounded_real_bootstrap_preflight_artifact: _workspace/2026-05-08_kostdict_bounded_real_preflight_probe.json
+    bounded_real_bootstrap_timeout_seconds: 300
+    bounded_real_bootstrap_cache_status: passed_within_limit
+    bounded_real_bootstrap_cache_bytes: 670190122
+    bounded_real_bootstrap_tool_call: dictionary_status
+    bounded_real_bootstrap_ready: true
+    bounded_real_bootstrap_entry_count: 179500
+    bounded_real_bootstrap_schema_version: 2
+    real_transport_blocker: resolved_by_prebuilt_cache_ready_dictionary_status_preflight
+    runtime_bootstrap_partial_cache_status: staging_cache_promoted_to_ready
+    runtime_bootstrap_cache_readiness_status: ready
+    runtime_bootstrap_cache_readiness_checked_at: '2026-05-08T07:14:29+00:00'
+    runtime_bootstrap_cache_readiness_artifact: _workspace/2026-05-08_kostdict_post_enablement_cache_inspection.json
+    runtime_bootstrap_cache_root_bytes: 214856662
+    runtime_bootstrap_runtime_write_root_bytes: 421708276
+    runtime_bootstrap_state_schema_version: 2
+    runtime_bootstrap_ready_database_status: ready
+    runtime_bootstrap_ready_database_bytes: 146161664
+    runtime_bootstrap_ready_entry_count: 179500
+    runtime_bootstrap_ready_sense_count: 209237
+    runtime_bootstrap_ready_schema_version: 2
+    runtime_bootstrap_ready_source_filename: 전체 내려받기_표준국어대사전_JSON_20260306.zip
+    runtime_bootstrap_ready_source_date: '2026-03-06'
+    runtime_bootstrap_staging_entry_count: 179500
+    runtime_bootstrap_staging_sense_count: 209237
+    prebuilt_cache_promotion_status: promoted
+    prebuilt_cache_promotion_mode: metadata_only_repair
+    prebuilt_cache_promoted_at: '2026-05-07T23:13:02.679009+00:00'
+    prebuilt_cache_promotion_artifact: _workspace/2026-05-08_kostdict_prebuilt_cache_promotion.json
+    bootstrap_performance_review_status: bounded_real_transport_preflight_passed
+    bootstrap_performance_reviewed_at: '2026-05-08T05:05:11+00:00'
+    bootstrap_performance_review_artifact: _workspace/2026-05-08_kostdict_bounded_real_preflight_probe.json
+    bootstrap_performance_review_decision: ready_cache_prevented_rebuild_dictionary_status_returned
+    prebuilt_cache_strategy_status: ready_cache_published
+    prebuilt_cache_strategy_reviewed_at: '2026-05-07T23:13:06+00:00'
+    prebuilt_cache_strategy_artifact: _workspace/2026-05-08_kostdict_prebuilt_cache_promotion.json
+    prebuilt_cache_strategy_decision: offline_staging_database_promoted_then_next_real_probe_allowed
+    prebuilt_cache_acceptance_status: ready
+    prebuilt_cache_acceptance_checked_at: '2026-05-08T07:14:29+00:00'
+    prebuilt_cache_acceptance_artifact: _workspace/2026-05-08_kostdict_post_enablement_cache_inspection.json
+    prebuilt_cache_acceptance_blocker: none
+    production_enablement_status: controlled_rollout_enabled
+    production_enablement_decision_status: real_transport_smoke_passed_ready_cache
+    production_enablement_decision_at: '2026-05-08T06:52:24+00:00'
+    production_enablement_recommended_option: controlled_enablement
+    production_enablement_source_enabled_after_decision: true
+    production_enablement_decision_failed_checks: []
+    production_rollout_status: active
+    production_rollout_enabled_at: '2026-05-08T06:52:24+00:00'
+    production_rollout_guarded_at: '2026-05-08T06:52:24+00:00'
+    production_rollout_monitored_at: '2026-05-08T06:52:24+00:00'
+    production_rollout_monitor_artifact: _workspace/2026-05-08_kostdict_real_transport_enablement_smoke.json
+    production_monitoring_metrics:
+      min_article_count: 1
+      require_non_empty_summary_count_equals_article_count: true
+      max_exact_fallback_link_count: 0
+      max_duplicate_link_count: 0
+      expected_source_name: dahlia/ko-stdict-mcp
+      expected_category: korean_nlp_mcp
+      expected_dictionary_status_ready: true
+      expected_schema_version: 2
+    production_rollback_criteria:
+    - monitor_execution_error
+    - non_empty_summary_count_below_article_count
+    - exact_fallback_link_count_above_zero
+    - duplicate_link_count_above_zero
+    - unexpected_source_or_category
+    - dictionary_status_not_ready
+    - schema_version_mismatch
+    production_collection_cadence: controlled_low_frequency_rollout
+    runtime_bootstrap_policy:
+      execution_mode: one_shot_real_transport_preflight
+      allowed_tool_names:
+      - dictionary_status
+      disallowed_tool_names:
+      - refresh_dictionary
+      - search_entries
+      - get_entry
+      allowed_write_roots:
+      - .cache/mcp/ko-stdict-mcp
+      data_dir_env: KO_STDICT_DATA_DIR
+      expected_download_url: https://stdict.korean.go.kr/common/download.do
+      expected_download_source: official_standard_korean_dictionary_dump
+      required_env:
+        NPM_CONFIG_CACHE: .cache/mcp/ko-stdict-mcp/npm-cache
+        DENO_DIR: .cache/mcp/ko-stdict-mcp/deno-cache
+        KO_STDICT_DATA_DIR: .cache/mcp/ko-stdict-mcp/data
+      max_bootstrap_seconds: 300
+      max_cache_bytes: 1073741824
+      max_response_items: 1
+      require_ready_status: true
+      require_schema_version: 2
+      cleanup_policy: keep_ready_cache_for_controlled_dictionary_status_rollout
+    runtime_bootstrap_cache_readiness_policy:
+      data_root: .cache/mcp/ko-stdict-mcp/data
+      state_file: .cache/mcp/ko-stdict-mcp/data/state.json
+      ready_database: .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite
+      staging_database: .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next
+      download_globs:
+      - .cache/mcp/ko-stdict-mcp/data/downloads/*.zip
+      required_schema_version: 2
+      minimum_ready_database_bytes: 1
+      inspect_sqlite_tables:
+      - entries
+      - senses
+      - metadata
+      required_metadata_fields:
+      - schema_version
+      - source_filename
+      - source_date
+      - entry_count
+      - imported_at
+      require_state_download_matches_metadata: true
+      partial_cache_indicators:
+      - .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next
+      - .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next-wal
+      - .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next-shm
+    runtime_bootstrap_prebuilt_cache_policy:
+      strategy: offline_build_then_atomic_cache_publish
+      trigger: dictionary_bootstrap_did_not_emit_initialize_response_within_300s
+      required_before_next_real_probe: true
+      offline_execution_boundary: run_dictionary_import_outside_mcp_stdio_startup
+      accepted_cache_readiness_status: ready
+      ready_state_schema_version: 2
+      ready_database: .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite
+      state_file: .cache/mcp/ko-stdict-mcp/data/state.json
+      rejected_partial_indicators:
+      - .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next
+      - .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next-wal
+      - .cache/mcp/ko-stdict-mcp/data/db/stdict.sqlite.next-shm
+      required_dictionary_status:
+        ready: true
+        schema_version: 2
+        minimum_entry_count: 1
+      acceptance_checks:
+      - runtime_cache_readiness_status_ready
+      - ready_database_present
+      - ready_database_has_current_schema
+      - state_schema_version_current
+      - no_staging_or_wal_partial_indicators
+      - ready_database_metadata_present
+      - ready_database_entry_count_positive
+      - dictionary_status_ready_true
+      - dictionary_status_schema_version_current
+      - state_download_matches_ready_database_metadata
+      - cache_size_within_policy
+      - provenance_recorded_from_official_dictionary_dump
+      - partial_cache_removed_before_publish
+      next_probe_allowed_when: runtime_cache_readiness_status_ready
+      cleanup_policy: remove_partial_staging_files_before_publishing_ready_cache
+    real_transport_preflight_required_checks:
+    - launch_exact_configured_command
+    - enforce_allowed_write_roots
+    - enforce_max_bootstrap_seconds
+    - enforce_max_cache_bytes
+    - enforce_runtime_cache_env_under_allowed_write_roots
+    - enforce_dictionary_data_dir_env_under_allowed_write_roots
+    - call_dictionary_status_only
+    - verify_no_refresh_dictionary_call
+    - verify_no_error_payload
+    - verify_cache_paths_under_allowed_root
+    - verify_cache_size_after_probe
+    - verify_prebuilt_cache_ready_before_probe
+    - verify_no_partial_cache_indicators
+    - verify_dictionary_status_ready_and_schema_current
+    - verify_prebuilt_cache_provenance
+    - record_probe_artifact_before_enablement
+    real_transport_preflight_rollback_criteria:
+    - bootstrap_timeout
+    - cache_size_limit_exceeded
+    - write_outside_allowed_root
+    - runtime_cache_env_outside_allowed_root
+    - wrong_entrypoint_no_stdio_response
+    - unexpected_tool_invocation
+    - dictionary_status_error_payload
+    - missing_ready_status
+    - schema_version_mismatch
+    - partial_cache_not_ready
+    - prebuilt_cache_missing
+    - prebuilt_cache_schema_mismatch
+    - prebuilt_cache_partial_indicators_present
+    fake_transport_plan_artifact: _workspace/2026-04-29_cycle48_kostdict_probe_dry_run.json
+    fake_transport_smoke_tested_at: '2026-04-29T12:22:28+00:00'
+    fake_transport_smoke_test_status: passed
+    fake_transport_smoke_test_artifact: _workspace/2026-04-29_cycle49_kostdict_fake_stdio_probe.json
+    fake_transport_fixture: fixtures/mcp/fake_ko_stdict_mcp.py
+    command: npx
+    args:
+    - -y
+    - deno@2.7.14
+    - eval
+    - import { runStdioServer } from "jsr:@hongminhee/ko-stdict-mcp@0.2.0";
+      await runStdioServer();
+    env:
+      NPM_CONFIG_CACHE: .cache/mcp/ko-stdict-mcp/npm-cache
+      DENO_DIR: .cache/mcp/ko-stdict-mcp/deno-cache
+      KO_STDICT_DATA_DIR: .cache/mcp/ko-stdict-mcp/data
+    tools:
+    - name: dictionary_status
+      arguments: {}
     resources: []
-    timeout_seconds: 20
-    max_items: 50
-    activation_gates:
-    - risk_scope_review_required
-    - tool_resource_allowlist_required
-    - command_or_endpoint_unresolved
-    - registry_crosscheck_required
-    - fake_transport_smoke_test_required
-    event_model: mcp_directory_entry
+    timeout_seconds: 300
+    max_items: 1
+    activation_gates: []
+    event_model: mcp_tool_result
 - id: mcp_candidate_chrisryugj_kordoc
   name: chrisryugj/kordoc
   type: mcp_server
@@ -134,7 +401,9 @@ sources:
   - document_processing
   - local_file_read
   notes: Real stdio transport smoke test passed for read-only detect_format against
-    repo-local fixture; enabled with a single allowlisted tool call.
+    repo-local fixture; enabled with a single allowlisted tool call. Controlled
+    rollout guard metadata was applied on 2026-04-29; source remains limited to
+    the repo-local fixture-based detect_format call.
   config:
     repository: chrisryugj/kordoc
     source_seed: awesome-mcp-korea
@@ -142,13 +411,38 @@ sources:
     activation_status: real_transport_smoke_test_passed
     activation_audited_at: '2026-04-14T01:55:57.420863+00:00'
     real_transport_smoke_tested_at: '2026-04-14T04:35:00+00:00'
-    metadata_checked_at: '2026-04-14T01:30:44.113793+00:00'
+    metadata_checked_at: '2026-05-07T05:20:56+00:00'
+    metadata_refresh_status: passed
+    metadata_refresh_artifact: _workspace/2026-05-07_mcp_github_repository_metadata_refresh.json
+    metadata_refresh_source: github_rest_api
     github_archived: false
     github_disabled: false
     github_license: MIT
-    github_pushed_at: '2026-04-11T03:29:28Z'
+    github_pushed_at: '2026-04-29T12:52:05Z'
     github_default_branch: main
-    github_stars: 724
+    github_stars: 894
+    github_head_sha: 13758461c931f1c00e24f9956dec51cec79594e0
+    docs_advisory_checked_at: '2026-04-30T05:06:52+00:00'
+    docs_advisory_audit_status: passed
+    docs_advisory_audit_artifact: _workspace/2026-04-30_cycle69_mcp_docs_advisory_audit.json
+    docs_advisory_audit_source: github_rest_api_contents_and_security_advisories_with_raw_html_fallback
+    github_readme_present: true
+    github_readme_path: README.md
+    github_readme_size: 22259
+    github_docs_present: true
+    github_docs_paths:
+      - README.md
+      - SECURITY.md
+    github_docs_path_count: 2
+    github_security_policy_present: true
+    github_security_policy_paths:
+      - SECURITY.md
+    github_security_advisory_access_status: checked
+    github_security_advisory_count: 0
+    github_security_advisory_open_count: 0
+    github_security_advisory_published_count: 0
+    github_security_advisory_state_counts: {}
+    github_security_advisory_ids: []
     command: npx
     args:
     - -y
@@ -163,12 +457,34 @@ sources:
     resources: []
     timeout_seconds: 20
     max_items: 5
+    production_enablement_status: controlled_rollout_enabled
+    production_enablement_decision_status: legacy_enabled_source_guard_applied
+    production_enablement_decision_at: '2026-04-29T11:14:18+00:00'
+    production_enablement_recommended_option: controlled_enablement
+    production_enablement_source_enabled_after_decision: true
+    production_enablement_decision_failed_checks: []
+    production_rollout_status: active
+    production_rollout_enabled_at: '2026-04-14T04:35:00+00:00'
+    production_rollout_guarded_at: '2026-04-29T11:14:18+00:00'
+    production_rollout_monitored_at: '2026-05-08T07:10:42+00:00'
+    production_rollout_monitor_artifact: _workspace/2026-05-08_kostdict_real_transport_enablement_smoke.json
+    production_monitoring_metrics:
+      min_article_count: 1
+      require_non_empty_summary_count_equals_article_count: true
+      max_exact_fallback_link_count: 0
+      max_duplicate_link_count: 0
+      expected_source_name: chrisryugj/kordoc
+      expected_category: korean_nlp_mcp
+    production_rollback_criteria:
+    - monitor_execution_error
+    - non_empty_summary_count_below_article_count
+    - exact_fallback_link_count_above_zero
+    - duplicate_link_count_above_zero
+    - unexpected_source_or_category
+    production_collection_cadence: controlled_low_frequency_rollout
     event_model: mcp_tool_result
     freshness_sla_days: 7
-    activation_gates:
-    - risk_scope_review_required
-    - registry_crosscheck_required
-    - production_monitoring_required
+    activation_gates: []
 entities:
 - name: MCPDomain
   display_name: MCP 도메인

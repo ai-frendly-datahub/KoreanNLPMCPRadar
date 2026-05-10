@@ -181,6 +181,8 @@ def main() -> None:
         print(f"missing_sources={summary.get('missing_sources', 0)}")
         print(f"not_tracked_sources={summary.get('not_tracked_sources', 0)}")
         print(f"mcp_signal_event_count={summary.get('mcp_signal_event_count', 0)}")
+        print(f"repository_metadata_stale_sources={summary.get('repository_metadata_stale_source_count', 0)}")
+        print(f"repository_metadata_review_required={summary.get('repository_metadata_review_required_count', 0)}")
 
 
 def _articles_from_existing_report(

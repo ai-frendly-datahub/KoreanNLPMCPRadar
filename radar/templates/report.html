@@ -356,6 +356,10 @@
           <span class="quality-metric__value">{{ quality_report.summary.repository_metadata_gap_count|default(0) }}</span>
         </div>
         <div class="quality-metric">
+          <span class="quality-metric__label">Metadata stale</span>
+          <span class="quality-metric__value">{{ quality_report.summary.repository_metadata_stale_source_count|default(0) }}</span>
+        </div>
+        <div class="quality-metric">
           <span class="quality-metric__label">Review items</span>
           <span class="quality-metric__value">{{ quality_report.summary.daily_review_item_count|default(0) }}</span>
         </div>
