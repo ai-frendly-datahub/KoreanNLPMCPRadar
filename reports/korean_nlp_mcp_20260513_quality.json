@@ -1,6 +1,6 @@
 {
   "category": "korean_nlp_mcp",
-  "generated_at": "2026-05-13T15:42:27.244314+00:00",
+  "generated_at": "2026-05-13T12:37:38.678592+00:00",
   "scope_note": "korean_nlp_mcp treats the awesome-mcp-korea section as a T4 community directory seed. Repository metadata, API credential scope, and security context remain separate enrichment layers until archived, license, and advisory fields are collected.",
   "summary": {
     "total_sources": 3,
@@ -13,7 +13,7 @@
     "unknown_event_date_sources": 0,
     "not_tracked_sources": 0,
     "skipped_disabled_sources": 0,
-    "collection_error_count": 0,
+    "collection_error_count": 1,
     "mcp_signal_event_count": 8,
     "directory_seed_source_count": 1,
     "mcp_server_candidate_count": 2,
@@ -104,17 +104,16 @@
       "status": "fresh",
       "article_count": 2,
       "event_count": 2,
-      "latest_event_at": "2026-05-13T15:40:49.989589+00:00",
+      "latest_event_at": "2026-05-13T12:37:19.562160+00:00",
       "age_days": 0.0,
-      "latest_title": "mcp-korean-spell",
-      "latest_url": "https://github.com/winterjung/mcp-korean-spell",
-      "latest_mcp_domain": [
-        "spell",
-        "한국어",
-        "맞춤법"
-      ],
+      "latest_title": "ko-stdict-mcp",
+      "latest_url": "https://github.com/dahlia/ko-stdict-mcp",
+      "latest_mcp_domain": [],
       "latest_provider": [],
-      "latest_capability": [],
+      "latest_capability": [
+        "검색",
+        "조회"
+      ],
       "latest_risk_scope": [],
       "latest_required_field_proxy": {
         "repository": true,
@@ -156,7 +155,7 @@
         "status": "fresh",
         "repository": "dahlia/ko-stdict-mcp",
         "checked_at": "2026-05-07T05:20:56+00:00",
-        "age_days": 6.43,
+        "age_days": 6.3,
         "freshness_sla_days": 7.0,
         "missing_fields": [],
         "github_pushed_at": "2026-03-29T08:16:57Z",
@@ -183,8 +182,8 @@
       "status": "fresh",
       "article_count": 1,
       "event_count": 1,
-      "latest_event_at": "2026-05-13T15:42:26.599906+00:00",
-      "age_days": 0.0,
+      "latest_event_at": "2026-05-12T20:30:31.339362+00:00",
+      "age_days": 0.67,
       "latest_title": "dahlia/ko-stdict-mcp",
       "latest_url": "https://github.com/dahlia/ko-stdict-mcp#dahlia%2Fko-stdict-mcp",
       "latest_mcp_domain": [],
@@ -222,7 +221,9 @@
         "failures": [],
         "warnings": []
       },
-      "errors": []
+      "errors": [
+        "dahlia/ko-stdict-mcp: Unexpected error - UnicodeEncodeError: 'cp949' codec can't encode character '\\ufffd' in position 121: illegal multibyte sequence"
+      ]
     },
     {
       "source": "chrisryugj/kordoc",
@@ -252,7 +253,7 @@
         "status": "fresh",
         "repository": "chrisryugj/kordoc",
         "checked_at": "2026-05-07T05:20:56+00:00",
-        "age_days": 6.43,
+        "age_days": 6.3,
         "freshness_sla_days": 7.0,
         "missing_fields": [],
         "github_pushed_at": "2026-04-29T12:52:05Z",
@@ -282,7 +283,7 @@
       "status": "fresh",
       "article_count": 2,
       "event_count": 2,
-      "latest_event_at": "2026-05-13T15:41:10.337322+00:00",
+      "latest_event_at": "2026-05-13T12:37:37.719256+00:00",
       "age_days": 0.0,
       "latest_title": "fixtures/mcp/kordoc_smoke_sample.pdf: pdf",
       "latest_url": "https://github.com/chrisryugj/kordoc#fixtures%2Fmcp%2Fkordoc_smoke_sample.pdf%3A%20pdf",
@@ -330,30 +331,11 @@
   ],
   "events": [
     {
-      "source": "dahlia/ko-stdict-mcp",
-      "event_model": "mcp_tool_result",
-      "title": "dahlia/ko-stdict-mcp",
-      "url": "https://github.com/dahlia/ko-stdict-mcp#dahlia%2Fko-stdict-mcp",
-      "event_at": "2026-05-13T15:42:26.599906+00:00",
-      "mcp_domain": [],
-      "provider": [],
-      "capability": [],
-      "risk_scope": [],
-      "project_health": [
-        "mcp"
-      ],
-      "required_field_proxy": {
-        "repository": true,
-        "tool_name": true,
-        "source_url": true
-      }
-    },
-    {
       "source": "chrisryugj/kordoc",
       "event_model": "mcp_tool_result",
       "title": "fixtures/mcp/kordoc_smoke_sample.pdf: pdf",
       "url": "https://github.com/chrisryugj/kordoc#fixtures%2Fmcp%2Fkordoc_smoke_sample.pdf%3A%20pdf",
-      "event_at": "2026-05-13T15:41:10.337322+00:00",
+      "event_at": "2026-05-13T12:37:37.719256+00:00",
       "mcp_domain": [],
       "provider": [],
       "capability": [
@@ -372,9 +354,51 @@
     {
       "source": "awesome-mcp-korea Korean NLP & Language",
       "event_model": "mcp_directory_entry",
+      "title": "ko-stdict-mcp",
+      "url": "https://github.com/dahlia/ko-stdict-mcp",
+      "event_at": "2026-05-13T12:37:19.562160+00:00",
+      "mcp_domain": [],
+      "provider": [],
+      "capability": [
+        "검색",
+        "조회"
+      ],
+      "risk_scope": [],
+      "project_health": [
+        "mcp",
+        "서버"
+      ],
+      "required_field_proxy": {
+        "repository": true,
+        "source_section": true,
+        "source_url": true
+      }
+    },
+    {
+      "source": "dahlia/ko-stdict-mcp",
+      "event_model": "mcp_tool_result",
+      "title": "dahlia/ko-stdict-mcp",
+      "url": "https://github.com/dahlia/ko-stdict-mcp#dahlia%2Fko-stdict-mcp",
+      "event_at": "2026-05-12T20:30:31.339362+00:00",
+      "mcp_domain": [],
+      "provider": [],
+      "capability": [],
+      "risk_scope": [],
+      "project_health": [
+        "mcp"
+      ],
+      "required_field_proxy": {
+        "repository": true,
+        "tool_name": true,
+        "source_url": true
+      }
+    },
+    {
+      "source": "awesome-mcp-korea Korean NLP & Language",
+      "event_model": "mcp_directory_entry",
       "title": "mcp-korean-spell",
       "url": "https://github.com/winterjung/mcp-korean-spell",
-      "event_at": "2026-05-13T15:40:49.989589+00:00",
+      "event_at": "2026-05-12T20:28:44.896255+00:00",
       "mcp_domain": [
         "spell",
         "한국어",
@@ -399,7 +423,7 @@
       "event_model": "mcp_tool_result",
       "title": "kordoc",
       "url": "https://github.com/chrisryugj/kordoc",
-      "event_at": "2026-05-13T15:40:49.989586+00:00",
+      "event_at": "2026-05-12T20:28:44.896252+00:00",
       "mcp_domain": [
         "kordoc"
       ],
@@ -428,7 +452,7 @@
       "event_model": "risk_scope_signal",
       "title": "kordoc",
       "url": "https://github.com/chrisryugj/kordoc",
-      "event_at": "2026-05-13T15:40:49.989586+00:00",
+      "event_at": "2026-05-12T20:28:44.896252+00:00",
       "mcp_domain": [
         "kordoc"
       ],
@@ -450,29 +474,6 @@
         "repository": true,
         "risk_scope": true,
         "evidence_url": true
-      }
-    },
-    {
-      "source": "awesome-mcp-korea Korean NLP & Language",
-      "event_model": "mcp_directory_entry",
-      "title": "ko-stdict-mcp",
-      "url": "https://github.com/dahlia/ko-stdict-mcp",
-      "event_at": "2026-05-13T15:40:49.989569+00:00",
-      "mcp_domain": [],
-      "provider": [],
-      "capability": [
-        "검색",
-        "조회"
-      ],
-      "risk_scope": [],
-      "project_health": [
-        "mcp",
-        "서버"
-      ],
-      "required_field_proxy": {
-        "repository": true,
-        "source_section": true,
-        "source_url": true
       }
     },
     {
@@ -578,5 +579,7 @@
       }
     ]
   },
-  "errors": []
+  "errors": [
+    "dahlia/ko-stdict-mcp: Unexpected error - UnicodeEncodeError: 'cp949' codec can't encode character '\\ufffd' in position 121: illegal multibyte sequence"
+  ]
 }
