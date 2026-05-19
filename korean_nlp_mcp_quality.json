@@ -1,6 +1,6 @@
 {
   "category": "korean_nlp_mcp",
-  "generated_at": "2026-05-19T13:32:09.391690+00:00",
+  "generated_at": "2026-05-19T16:20:42.011404+00:00",
   "scope_note": "korean_nlp_mcp treats the awesome-mcp-korea section as a T4 community directory seed. Repository metadata, API credential scope, and security context remain separate enrichment layers until archived, license, and advisory fields are collected.",
   "summary": {
     "total_sources": 3,
@@ -104,7 +104,7 @@
       "status": "fresh",
       "article_count": 2,
       "event_count": 2,
-      "latest_event_at": "2026-05-19T13:27:43.634664+00:00",
+      "latest_event_at": "2026-05-19T16:15:41.247071+00:00",
       "age_days": 0.0,
       "latest_title": "mcp-korean-spell",
       "latest_url": "https://github.com/winterjung/mcp-korean-spell",
@@ -156,7 +156,7 @@
         "status": "stale",
         "repository": "dahlia/ko-stdict-mcp",
         "checked_at": "2026-05-07T05:20:56+00:00",
-        "age_days": 12.34,
+        "age_days": 12.46,
         "freshness_sla_days": 7.0,
         "missing_fields": [],
         "github_pushed_at": "2026-03-29T08:16:57Z",
@@ -184,7 +184,7 @@
       "article_count": 1,
       "event_count": 1,
       "latest_event_at": "2026-05-19T13:32:08.751287+00:00",
-      "age_days": 0.0,
+      "age_days": 0.12,
       "latest_title": "dahlia/ko-stdict-mcp",
       "latest_url": "https://github.com/dahlia/ko-stdict-mcp#dahlia%2Fko-stdict-mcp",
       "latest_mcp_domain": [],
@@ -252,7 +252,7 @@
         "status": "stale",
         "repository": "chrisryugj/kordoc",
         "checked_at": "2026-05-07T05:20:56+00:00",
-        "age_days": 12.34,
+        "age_days": 12.46,
         "freshness_sla_days": 7.0,
         "missing_fields": [],
         "github_pushed_at": "2026-04-29T12:52:05Z",
@@ -282,16 +282,21 @@
       "status": "fresh",
       "article_count": 2,
       "event_count": 2,
-      "latest_event_at": "2026-05-19T13:28:03.229521+00:00",
+      "latest_event_at": "2026-05-19T16:15:41.247068+00:00",
       "age_days": 0.0,
-      "latest_title": "fixtures/mcp/kordoc_smoke_sample.pdf: pdf",
-      "latest_url": "https://github.com/chrisryugj/kordoc#fixtures%2Fmcp%2Fkordoc_smoke_sample.pdf%3A%20pdf",
-      "latest_mcp_domain": [],
+      "latest_title": "kordoc",
+      "latest_url": "https://github.com/chrisryugj/kordoc",
+      "latest_mcp_domain": [
+        "kordoc"
+      ],
       "latest_provider": [],
       "latest_capability": [
-        "pdf"
+        "pdf",
+        "파싱"
       ],
-      "latest_risk_scope": [],
+      "latest_risk_scope": [
+        "문서"
+      ],
       "latest_required_field_proxy": {
         "repository": true,
         "tool_name": true,
@@ -330,6 +335,112 @@
   ],
   "events": [
     {
+      "source": "awesome-mcp-korea Korean NLP & Language",
+      "event_model": "mcp_directory_entry",
+      "title": "mcp-korean-spell",
+      "url": "https://github.com/winterjung/mcp-korean-spell",
+      "event_at": "2026-05-19T16:15:41.247071+00:00",
+      "mcp_domain": [
+        "spell",
+        "한국어",
+        "맞춤법"
+      ],
+      "provider": [],
+      "capability": [],
+      "risk_scope": [],
+      "project_health": [
+        "mcp",
+        "서버",
+        "도구"
+      ],
+      "required_field_proxy": {
+        "repository": true,
+        "source_section": true,
+        "source_url": true
+      }
+    },
+    {
+      "source": "chrisryugj/kordoc",
+      "event_model": "mcp_tool_result",
+      "title": "kordoc",
+      "url": "https://github.com/chrisryugj/kordoc",
+      "event_at": "2026-05-19T16:15:41.247068+00:00",
+      "mcp_domain": [
+        "kordoc"
+      ],
+      "provider": [],
+      "capability": [
+        "pdf",
+        "파싱"
+      ],
+      "risk_scope": [
+        "문서"
+      ],
+      "project_health": [
+        "mcp",
+        "서버",
+        "도구",
+        "문서"
+      ],
+      "required_field_proxy": {
+        "repository": true,
+        "tool_name": true,
+        "source_url": true
+      }
+    },
+    {
+      "source": "chrisryugj/kordoc",
+      "event_model": "risk_scope_signal",
+      "title": "kordoc",
+      "url": "https://github.com/chrisryugj/kordoc",
+      "event_at": "2026-05-19T16:15:41.247068+00:00",
+      "mcp_domain": [
+        "kordoc"
+      ],
+      "provider": [],
+      "capability": [
+        "pdf",
+        "파싱"
+      ],
+      "risk_scope": [
+        "문서"
+      ],
+      "project_health": [
+        "mcp",
+        "서버",
+        "도구",
+        "문서"
+      ],
+      "required_field_proxy": {
+        "repository": true,
+        "risk_scope": true,
+        "evidence_url": true
+      }
+    },
+    {
+      "source": "awesome-mcp-korea Korean NLP & Language",
+      "event_model": "mcp_directory_entry",
+      "title": "ko-stdict-mcp",
+      "url": "https://github.com/dahlia/ko-stdict-mcp",
+      "event_at": "2026-05-19T16:15:41.247053+00:00",
+      "mcp_domain": [],
+      "provider": [],
+      "capability": [
+        "검색",
+        "조회"
+      ],
+      "risk_scope": [],
+      "project_health": [
+        "mcp",
+        "서버"
+      ],
+      "required_field_proxy": {
+        "repository": true,
+        "source_section": true,
+        "source_url": true
+      }
+    },
+    {
       "source": "dahlia/ko-stdict-mcp",
       "event_model": "mcp_tool_result",
       "title": "dahlia/ko-stdict-mcp",
@@ -366,112 +477,6 @@
       "required_field_proxy": {
         "repository": true,
         "tool_name": true,
-        "source_url": true
-      }
-    },
-    {
-      "source": "awesome-mcp-korea Korean NLP & Language",
-      "event_model": "mcp_directory_entry",
-      "title": "mcp-korean-spell",
-      "url": "https://github.com/winterjung/mcp-korean-spell",
-      "event_at": "2026-05-19T13:27:43.634664+00:00",
-      "mcp_domain": [
-        "spell",
-        "한국어",
-        "맞춤법"
-      ],
-      "provider": [],
-      "capability": [],
-      "risk_scope": [],
-      "project_health": [
-        "mcp",
-        "서버",
-        "도구"
-      ],
-      "required_field_proxy": {
-        "repository": true,
-        "source_section": true,
-        "source_url": true
-      }
-    },
-    {
-      "source": "chrisryugj/kordoc",
-      "event_model": "mcp_tool_result",
-      "title": "kordoc",
-      "url": "https://github.com/chrisryugj/kordoc",
-      "event_at": "2026-05-19T13:27:43.634661+00:00",
-      "mcp_domain": [
-        "kordoc"
-      ],
-      "provider": [],
-      "capability": [
-        "pdf",
-        "파싱"
-      ],
-      "risk_scope": [
-        "문서"
-      ],
-      "project_health": [
-        "mcp",
-        "서버",
-        "도구",
-        "문서"
-      ],
-      "required_field_proxy": {
-        "repository": true,
-        "tool_name": true,
-        "source_url": true
-      }
-    },
-    {
-      "source": "chrisryugj/kordoc",
-      "event_model": "risk_scope_signal",
-      "title": "kordoc",
-      "url": "https://github.com/chrisryugj/kordoc",
-      "event_at": "2026-05-19T13:27:43.634661+00:00",
-      "mcp_domain": [
-        "kordoc"
-      ],
-      "provider": [],
-      "capability": [
-        "pdf",
-        "파싱"
-      ],
-      "risk_scope": [
-        "문서"
-      ],
-      "project_health": [
-        "mcp",
-        "서버",
-        "도구",
-        "문서"
-      ],
-      "required_field_proxy": {
-        "repository": true,
-        "risk_scope": true,
-        "evidence_url": true
-      }
-    },
-    {
-      "source": "awesome-mcp-korea Korean NLP & Language",
-      "event_model": "mcp_directory_entry",
-      "title": "ko-stdict-mcp",
-      "url": "https://github.com/dahlia/ko-stdict-mcp",
-      "event_at": "2026-05-19T13:27:43.634647+00:00",
-      "mcp_domain": [],
-      "provider": [],
-      "capability": [
-        "검색",
-        "조회"
-      ],
-      "risk_scope": [],
-      "project_health": [
-        "mcp",
-        "서버"
-      ],
-      "required_field_proxy": {
-        "repository": true,
-        "source_section": true,
         "source_url": true
       }
     },
@@ -551,7 +556,7 @@
       "source": "dahlia/ko-stdict-mcp",
       "repository": "dahlia/ko-stdict-mcp",
       "checked_at": "2026-05-07T05:20:56+00:00",
-      "age_days": 12.34,
+      "age_days": 12.46,
       "freshness_sla_days": 7.0
     },
     {
@@ -568,7 +573,7 @@
       "source": "chrisryugj/kordoc",
       "repository": "chrisryugj/kordoc",
       "checked_at": "2026-05-07T05:20:56+00:00",
-      "age_days": 12.34,
+      "age_days": 12.46,
       "freshness_sla_days": 7.0
     }
   ],
