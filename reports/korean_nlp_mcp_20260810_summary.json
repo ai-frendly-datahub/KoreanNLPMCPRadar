@@ -1,0 +1,31 @@
+{
+  "date": "2026-08-10",
+  "category": "korean_nlp_mcp",
+  "article_count": 5,
+  "source_count": 3,
+  "matched_count": 5,
+  "top_entities": [
+    {
+      "name": "ProjectHealth",
+      "count": 11
+    },
+    {
+      "name": "Capability",
+      "count": 5
+    },
+    {
+      "name": "MCPDomain",
+      "count": 4
+    },
+    {
+      "name": "RiskScope",
+      "count": 1
+    }
+  ],
+  "sources": {
+    "dahlia/ko-stdict-mcp": 1,
+    "awesome-mcp-korea Korean NLP & Language": 2,
+    "chrisryugj/kordoc": 2
+  },
+  "generated_at": "2026-08-10T14:18:20.127285+00:00"
+}
